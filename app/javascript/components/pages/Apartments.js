@@ -5,46 +5,35 @@ import { Link } from 'react-router-dom'
 
 class Apartments extends React.Component {
   render () {
-
     const { current_user, apartments } = this.props
     const apartment = apartments.filter((a, i) => {
-      return (
-      a.user_id === current_user.id)
+      return(  a.user_id === current_user.id)
     })
-
     return (
       <Row>
-      <Col sm={12}>
-        <CardDeck>
-        {apartment.map((apartment, i) =>
-          <Col sm="12">
-          <Card>
-          <CardBody>
-          <CardTitle> {apartment.id}</CardTitle>
-          <CardText> {apartment.street} </CardText>
-          <CardText> {apartment.city} </CardText>
-          <CardText> {apartment.state} </CardText>
-          <CardText> {apartment.postal_code} </CardText>
-          <CardText> {apartment.country} </CardText>
-
-
-          <UncontrolledCollapse toggler={`#toggler${i}`}>
-          <CardText> {apartment.manager_name} </CardText>
-          <CardText> {apartment.manager_number} </CardText>
-          <CardText> {apartment.manager_hours} </CardText>
-          </UncontrolledCollapse>
-          <Button color="primary" id={`toggler${i}`} style={{ marginBottom: '1rem' }}>
-          More Info
-          </Button>
-          </CardBody>
-          </Card>
-          </Col>
-        )}
-        </CardDeck>
+        <Col>
+          <CardDeck style={{display: 'flex', flexDirection: 'row'}}>
+            { apartment.map((apartment, i) =>
+              <Col>
+                <Card style={{flex: 1}} bodystyle={{padding: "0"}}>
+                  <CardBody>
+                    <CardText className="text-center"> {apartment.street} </CardText>
+                    <CardText className="text-center"> {apartment.city} </CardText>
+                    <CardText className="text-center"> {apartment.state} </CardText>
+                    <CardText className="text-center"> {apartment.postal_code} </CardText>
+                    <CardText className="text-center"> {apartment.country} </CardText>
+                    <div className="text-center">
+                      <Link to={`/apartmentinfo/${apartment.id}`}> More Info </Link>
+                    </div>
+                  </CardBody>
+                </Card>
+              </Col>
+            )}
+          </CardDeck>
         </Col>
       </Row>
-        )
-    }
+    )
+  }
 }
 
 export default Apartments

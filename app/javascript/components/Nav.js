@@ -21,6 +21,7 @@ const Example = (props) => {
   const toggle = () => setIsOpen(!isOpen);
   return (
     <div>
+      {props.signed_in &&
       <Navbar color="light" light expand="md">
         <NavbarBrand href="/">Apartment App</NavbarBrand>
         <NavbarToggler onClick={toggle} />
@@ -35,24 +36,25 @@ const Example = (props) => {
           <NavItem>
           <NavLink href="/addnew">Add New Apartment</NavLink>
           </NavItem>
-          {props.signed_in &&
-           <div>
-             <NavLink href={props.sign_out_route}>Sign Out</NavLink>
-           </div>
-         }
-         {!props.signed_in &&
-           <div>
-             <NavLink href={props.sign_in_route}>Sign In</NavLink>
-           </div>
-         }
-
+          
           </Nav>
-          <NavbarText>hi</NavbarText>
-
-
-
-        </Collapse>
-      </Navbar>
+          <div>
+          <NavLink href={props.sign_out_route}>Sign Out</NavLink>
+          </div>
+          </Collapse>
+          </Navbar>
+        }
+        {!props.signed_in &&
+        <Navbar color="light" light expand="md">
+        <NavbarBrand href="/">Apartment App</NavbarBrand>
+        <Nav className="mr-auto" navbar>
+        </Nav>
+          <div>
+          <NavLink href={props.sign_in_route}>Sign In</NavLink>
+          </div>
+        </Navbar>
+        }
+          
     </div>
   );
 }

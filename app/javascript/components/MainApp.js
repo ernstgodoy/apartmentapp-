@@ -86,7 +86,7 @@ class MainApp extends React.Component {
         { !signed_in &&
           <Jumbotron id="jumbo" className="text-center">
             <h2>Welcome To Apartment Finder!</h2>
-            <p>Ready to find your next apartment?<br /> Sign up to see whats available!</p>
+            <p>Are you a property manager looking to fill your vacant properties?<br /> Sign up to list your properties!</p>
           </Jumbotron>
         }
         <Router>

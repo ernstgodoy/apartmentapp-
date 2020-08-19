@@ -3,26 +3,23 @@ import React from "react"
 import { UncontrolledCollapse, CardDeck, Row, Col, Card, CardImg, CardText, CardBody, CardTitle, Button, Jumbotron, Container } from 'reactstrap';
 import { Link } from 'react-router-dom'
 
-class Apartments extends React.Component {
+class AllApartments extends React.Component {
   render () {
-    const { current_user, apartments } = this.props
-    const apartment = apartments.filter((a, i) => {
-      return(  a.user_id === current_user.id)
-    })
+    const { apartments } = this.props
     return (
       <React.Fragment>
         <Container>
           <Row>
             <Col>
               <div className="text-center">
-                <h1>My Listings</h1>
+                <h1>Available Now!</h1>
               </div>
             </Col>
           </Row>
-          <Row >
-            <Col >
+          <Row>
+            <Col>
               <CardDeck style={{display: 'flex', flexDirection: 'row'}}>
-                { apartment.map((apartment, i) =>
+                { apartments.map((apartment, i) =>
                   <Col md={6}>
                     <Card style={{flex: 1}} bodystyle={{padding: "0"}}>
                       <CardBody>
@@ -45,4 +42,4 @@ class Apartments extends React.Component {
   }
 }
 
-export default Apartments
+export default AllApartments

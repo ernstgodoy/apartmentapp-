@@ -13,4 +13,13 @@
  *= require_tree .
  *= require_self
  */
- @import 'bootstrap';
+@import 'bootstrap';
+
+#jumbo {
+  background-image: url("apartments.jpeg");
+  background-size: cover;
+  height: 250px;
+  width: auto;
+  color: white;  
+  text-shadow: 2px 2px 5px black;
+}

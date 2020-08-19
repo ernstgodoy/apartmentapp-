@@ -4,6 +4,7 @@ import { Jumbotron } from 'reactstrap'
 import Example from "./Nav"
 
 //pages
+import AllApartments from "./pages/AllApartments"
 import Apartments from "./pages/Apartments"
 import AddNew from "./pages/AddNew"
 import ApartmentInfo from "./pages/ApartmentInfo"
@@ -25,7 +26,7 @@ class MainApp extends React.Component {
 
   getApartments = () => {
     fetch("/apartments").then((response) => {
-      if (response.status === 200) {
+      if (response.ok) {
         return(response.json()) 
       }
     }).then((apartmentsArray) => {
@@ -82,15 +83,19 @@ class MainApp extends React.Component {
     return (
       <React.Fragment>
         <Example signed_in= {signed_in} sign_in_route= {sign_in_route} sign_out_route= {sign_out_route}/>
-        <Jumbotron>
-          Hi
-        </Jumbotron>
+        { !signed_in &&
+          <Jumbotron id="jumbo" className="text-center">
+            <h2>Welcome To Apartment Finder!</h2>
+            <p>Ready to find your next apartment?<br /> Sign up to see whats available!</p>
+          </Jumbotron>
+        }
         <Router>
           {/* items in nav bar */}
           <Switch>
+            <Route exact path="/availableapartments" render={(props) => <AllApartments {...props} onDelete= {this.deleteApartment} apartments={ this.state.apartments } /> } />
             <Route exact path="/apartments" render={(props) => <Apartments {...props} onDelete= {this.deleteApartment} apartments={ this.state.apartments } current_user={current_user} /> } />
             <Route exact path="/addnew" render={(props) => <AddNew onSubmit={this.createApartment} current_user={current_user} /> } />
-            <Route exact path="/apartmentinfo/:id" render={(props) => <ApartmentInfo {...props} onDelete= {this.deleteApartment} apartments={ this.state.apartments } /> } />
+            <Route exact path="/apartmentinfo/:id" render={(props) => <ApartmentInfo {...props} onDelete= {this.deleteApartment} apartments={ this.state.apartments } get={ this.getApartments } apartmentId={ props.match.params.id }/> } />
             <Route exact path="/edit/:id" render={(props) => <Edit {...props} onEdit={this.editApartment} current_user={current_user} apartments={ this.state.apartments } /> } />
           </Switch>
         </Router>

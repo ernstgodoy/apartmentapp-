@@ -23,15 +23,15 @@ const Example = (props) => {
     <div>
       {props.signed_in &&
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">Apartment App</NavbarBrand>
+        <NavbarBrand href="/">AF</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
           <NavItem>
-          <NavLink href="/">Home</NavLink>
+          <NavLink href="/availableapartments">Available Apartments</NavLink>
           </NavItem>
           <NavItem>
-          <NavLink href="/apartments">Apartments</NavLink>
+          <NavLink href="/apartments">My Listings</NavLink>
           </NavItem>
           <NavItem>
           <NavLink href="/addnew">Add New Apartment</NavLink>
@@ -46,8 +46,11 @@ const Example = (props) => {
         }
         {!props.signed_in &&
         <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">Apartment App</NavbarBrand>
+        <NavbarBrand href="/">AF</NavbarBrand>
         <Nav className="mr-auto" navbar>
+          <NavItem>
+          <NavLink href="/availableapartments">Available Apartments</NavLink>
+          </NavItem>
         </Nav>
           <div>
           <NavLink href={props.sign_in_route}>Sign In</NavLink>

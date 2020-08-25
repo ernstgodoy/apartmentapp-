@@ -23,7 +23,7 @@ const Example = (props) => {
     <div>
       {props.signed_in &&
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">AF</NavbarBrand>
+        <NavbarBrand href="/">AL</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
@@ -46,7 +46,7 @@ const Example = (props) => {
         }
         {!props.signed_in &&
         <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">AF</NavbarBrand>
+        <NavbarBrand href="/">AL</NavbarBrand>
         <Nav className="mr-auto" navbar>
           <NavItem>
           <NavLink href="/availableapartments">Available Apartments</NavLink>

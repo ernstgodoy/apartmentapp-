@@ -9,6 +9,7 @@ import Apartments from "./pages/Apartments"
 import AddNew from "./pages/AddNew"
 import ApartmentInfo from "./pages/ApartmentInfo"
 import Edit from "./pages/Edit"
+import Landing from "./pages/Landing"
 
 
 class MainApp extends React.Component {
@@ -83,15 +84,10 @@ class MainApp extends React.Component {
     return (
       <React.Fragment>
         <Example signed_in= {signed_in} sign_in_route= {sign_in_route} sign_out_route= {sign_out_route}/>
-        { !signed_in &&
-          <Jumbotron id="jumbo" className="text-center">
-            <h2>Welcome To Apartment Finder!</h2>
-            <p>Are you a property manager looking to fill your vacant properties?<br /> Sign up to list your properties!</p>
-          </Jumbotron>
-        }
         <Router>
           {/* items in nav bar */}
           <Switch>
+            <Route exact path="/" component={ Landing } />
             <Route exact path="/availableapartments" render={(props) => <AllApartments {...props} onDelete= {this.deleteApartment} apartments={ this.state.apartments } /> } />
             <Route exact path="/apartments" render={(props) => <Apartments {...props} onDelete= {this.deleteApartment} apartments={ this.state.apartments } current_user={current_user} /> } />
             <Route exact path="/addnew" render={(props) => <AddNew onSubmit={this.createApartment} current_user={current_user} /> } />

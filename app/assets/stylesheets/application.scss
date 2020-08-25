@@ -15,11 +15,21 @@
  */
 @import 'bootstrap';
 
-#jumbo {
+#landing {
   background-image: url("apartments.jpeg");
   background-size: cover;
-  height: 250px;
+  height: 92vmin;
   width: auto;
   color: white;  
   text-shadow: 2px 2px 5px black;
+}
+
+#landing-text{
+  margin-right: auto;
+  margin-left: auto;
+  min-height: 70vmin;
+  padding-top: 30vmin;
+  padding-right: 20vmin;
+  padding-left: 20vmin;
+
 }

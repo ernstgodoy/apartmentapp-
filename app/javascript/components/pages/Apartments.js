@@ -24,7 +24,7 @@ class Apartments extends React.Component {
               <CardDeck style={{display: 'flex', flexDirection: 'row'}}>
                 { apartment.map((apartment, i) =>
                   <Col md={6}>
-                    <Card style={{flex: 1}} bodystyle={{padding: "0"}}>
+                    <Card style={{flex: 1}} bodystyle={{padding: "0"}} key={i}>
                       <CardBody>
                         <CardText className="text-center"> {apartment.street} </CardText>
                         <CardText className="text-center"> {apartment.city}, {apartment.state.toUpperCase()} </CardText>

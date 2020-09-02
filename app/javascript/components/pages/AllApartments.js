@@ -19,9 +19,9 @@ class AllApartments extends React.Component {
           <Row>
             <Col>
               <CardDeck style={{display: 'flex', flexDirection: 'row'}}>
-                { apartments.map((apartment, i) =>
+                { apartments && apartments.map((apartment, i) =>
                   <Col md={6}>
-                    <Card style={{flex: 1}} bodystyle={{padding: "0"}}>
+                    <Card style={{flex: 1}} bodystyle={{padding: "0"}} key={i}>
                       <CardBody>
                         <CardText className="text-center"> {apartment.street} </CardText>
                         <CardText className="text-center"> {apartment.city}, {apartment.state.toUpperCase()} </CardText>

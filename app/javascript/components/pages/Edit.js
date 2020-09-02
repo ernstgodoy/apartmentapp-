@@ -8,7 +8,7 @@ class Edit extends React.Component {
     super(props)
     this.state = {
       success: false,
-      form:{
+      form: {
           apartmentid: props.match.params.id,
           user_id: this.props.current_user.id,
           street: '',
@@ -32,7 +32,6 @@ setForm = () => {
   const { apartments } = this.props
   const apartment = apartments.find((a)=> a.id === parseInt(form.apartmentid))
   this.setState({form: apartment})
-  console.log(apartment)
 }
 
 handleChange = (e) => {
@@ -43,11 +42,8 @@ handleChange = (e) => {
 }
 
 handleEdit = () =>{
-
-  this.props.onEdit(this.state.form)
-  // .then(()=>{
-  //   this.setState({success: true}) //This triggers the redirect
-  // })
+  const editedApt = this.state.form
+  this.props.onEdit(editedApt)
 }
 
 
@@ -69,7 +65,7 @@ handleEdit = () =>{
                             type="text"
                             name="street"
                             onChange={this.handleChange}
-                            value={this.state.form.street}
+                            value={ form.street }
                         />
                 </FormGroup>
                 <FormGroup>
@@ -79,7 +75,7 @@ handleEdit = () =>{
                             type="text"
                             name="city"
                             onChange={this.handleChange}
-                            value={this.state.form.city}
+                            value={ form.city }
                         />
                 </FormGroup>
                 <FormGroup>
@@ -89,7 +85,7 @@ handleEdit = () =>{
                             type="text"
                             name="state"
                             onChange={this.handleChange}
-                            value={this.state.form.state}
+                            value={ form.state }
                         />
                 </FormGroup>
                 <FormGroup>
@@ -99,7 +95,7 @@ handleEdit = () =>{
                             type="text"
                             name="postal_code"
                             onChange={this.handleChange}
-                            value={this.state.form.postal_code}
+                            value={ form.postal_code }
                         />
                 </FormGroup>
                 <FormGroup>
@@ -109,7 +105,7 @@ handleEdit = () =>{
                             type="text"
                             name="country"
                             onChange={this.handleChange}
-                            value={this.state.form.country}
+                            value={ form.country }
                         />
                 </FormGroup>
                 <FormGroup>
@@ -119,7 +115,7 @@ handleEdit = () =>{
                             type="text"
                             name="manager_name"
                             onChange={this.handleChange}
-                            value={this.state.form.manager_name}
+                            value={ form.manager_name }
                         />
                   </FormGroup>
                   <FormGroup>
@@ -129,7 +125,7 @@ handleEdit = () =>{
                               type="text"
                               name="manager_number"
                               onChange={this.handleChange}
-                              value={this.state.form.manager_number}
+                              value={ form.manager_number }
                           />
                   </FormGroup>
                   <FormGroup>
@@ -139,7 +135,7 @@ handleEdit = () =>{
                               type="text"
                               name="manager_hours"
                               onChange={this.handleChange}
-                              value={this.manager_hours}
+                              value={ form.manager_hours }
                           />
                   </FormGroup>
               </Form>

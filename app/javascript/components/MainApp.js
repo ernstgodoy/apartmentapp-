@@ -60,7 +60,6 @@ class MainApp extends React.Component {
   }
 
   editApartment = (apartment)=>{
-    // console.log('api call:', apartment, apartment.id)
     return fetch(`/apartments/${apartment.id}`, {
       body: JSON.stringify(apartment), 
       headers: { 
@@ -91,7 +90,7 @@ class MainApp extends React.Component {
             <Route exact path="/availableapartments" render={(props) => <AllApartments {...props} onDelete= {this.deleteApartment} apartments={ this.state.apartments } /> } />
             <Route exact path="/apartments" render={(props) => <Apartments {...props} onDelete= {this.deleteApartment} apartments={ this.state.apartments } current_user={current_user} /> } />
             <Route exact path="/addnew" render={(props) => <AddNew onSubmit={this.createApartment} current_user={current_user} /> } />
-            <Route exact path="/apartmentinfo/:id" render={(props) => <ApartmentInfo {...props} onDelete= {this.deleteApartment} apartments={ this.state.apartments } get={ this.getApartments } apartmentId={ props.match.params.id }/> } />
+            <Route exact path="/apartmentinfo/:id" render={(props) => <ApartmentInfo {...props} signed_in={signed_in} current_user= {current_user} onDelete= {this.deleteApartment} /> } />
             <Route exact path="/edit/:id" render={(props) => <Edit {...props} onEdit={this.editApartment} current_user={current_user} apartments={ this.state.apartments } /> } />
           </Switch>
         </Router>

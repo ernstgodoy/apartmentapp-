@@ -1,5 +1,5 @@
 import React from "react"
-import { CardDeck, Row, Col, Card, CardImg, CardText, CardBody,CardTitle, Container } from 'reactstrap';
+import { Row, Col, Container } from 'reactstrap';
 import { Link } from "react-router-dom"
 
 class ApartmentInfo extends React.Component {
@@ -28,31 +28,23 @@ class ApartmentInfo extends React.Component {
   render () {
     const { signed_in, current_user } = this.props
     const { apartment } = this.state
+    const img = require('../../../assets/images/interior.jpg')
     return (
-      <Container>
+      <Container className="apartment-info">
         { apartment && 
           <Row>
-            <Col>
-              <CardDeck>
-                <Col>
-                  <Card>
-                    <CardBody>
-                      <CardText className="text-center"> {apartment.street} </CardText>
-                      <CardText className="text-center"> {apartment.city}, {apartment.state.toUpperCase()} </CardText>
-                      <CardText className="text-center"> {apartment.postal_code} {apartment.country.toUpperCase()}</CardText>
-                      <CardText className="text-center"> <em>Manager:</em> {apartment.manager_name} {apartment.manager_number} </CardText>
-                      <CardText className="text-center"> <em>Hours:</em> {apartment.manager_hours} </CardText>
-                      {signed_in && (current_user.id === apartment.user_id) && 
-                        <div className="text-center">
-                          <Link to="/apartments" className= "btn btn-primary" onClick={this.handleDelete}>Delete Listing</Link>
-                          &nbsp;
-                          <Link to={`/edit/${apartment.id}`} className= "btn btn-primary">Edit Listing</Link>
-                        </div>
-                      }
-                    </CardBody>
-                  </Card>
-                </Col>
-              </CardDeck>
+            <Col md={ 6 }>
+              <img className="img-fluid" src={ img }/>
+            </Col>
+            <Col md={ 6 } className="info">
+              <p>{apartment.street}<br/>{apartment.city}, {apartment.state.toUpperCase()}<br/> {apartment.postal_code} {apartment.country.toUpperCase()}<br/> <em>Hours:</em> {apartment.manager_hours}<br/> <em>Manager:</em> {apartment.manager_name} {apartment.manager_number}</p>
+              {signed_in && (current_user.id === apartment.user_id) && 
+                <div>
+                  <Link to="/apartments" className= "btn btn-primary" onClick={this.handleDelete}>Delete Listing</Link>
+                  &nbsp;
+                  <Link to={`/edit/${apartment.id}`} className= "btn btn-primary">Edit Listing</Link>
+                </div>
+              }
             </Col>
           </Row>
         }

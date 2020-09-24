@@ -77,7 +77,8 @@ class MainApp extends React.Component {
       signed_in,
       sign_in_route,
       sign_out_route,
-      current_user
+      current_user,
+      sign_up_route
     } = this.props
     return (
       <React.Fragment>
@@ -85,12 +86,12 @@ class MainApp extends React.Component {
         <Router>
           {/* items in nav bar */}
           <Switch>
-            <Route exact path="/" component={ Landing } />
-            <Route exact path="/availableapartments" render={(props) => <AllApartments {...props} onDelete= {this.deleteApartment} apartments={ this.state.apartments } /> } />
-            <Route exact path="/apartments" render={(props) => <Apartments {...props} onDelete= {this.deleteApartment} apartments={ this.state.apartments } current_user={current_user} /> } />
-            <Route exact path="/addnew" render={(props) => <AddNew onSubmit={this.createApartment} current_user={current_user} /> } />
-            <Route exact path="/apartmentinfo/:id" render={(props) => <ApartmentInfo {...props} signed_in={signed_in} current_user= {current_user} onDelete= {this.deleteApartment} /> } />
-            <Route exact path="/edit/:id" render={(props) => <Edit {...props} onEdit={this.editApartment} current_user={current_user} apartments={ this.state.apartments } /> } />
+            <Route exact path="/" render={(props) => <Landing {...props} signed_in={signed_in} sign_up_route={ sign_up_route } /> } />
+            <Route path="/availableapartments" render={(props) => <AllApartments {...props} onDelete= {this.deleteApartment} apartments={ this.state.apartments } /> } />
+            <Route path="/apartments" render={(props) => <Apartments {...props} onDelete= {this.deleteApartment} apartments={ this.state.apartments } current_user={current_user} /> } />
+            <Route path="/addnew" render={(props) => <AddNew {...props} onSubmit={this.createApartment} current_user={current_user} /> } />
+            <Route path="/apartmentinfo/:id" render={(props) => <ApartmentInfo {...props} signed_in={signed_in} current_user= {current_user} onDelete= {this.deleteApartment} /> } />
+            <Route path="/edit/:id" render={(props) => <Edit {...props} onEdit={this.editApartment} current_user={current_user} apartments={ this.state.apartments } /> } />
           </Switch>
         </Router>
       </React.Fragment>

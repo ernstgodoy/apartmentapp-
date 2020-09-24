@@ -1,7 +1,6 @@
 import React from "react"
-import { CardDeck, Row, Col, Card, CardImg, CardText, CardBody,CardTitle, Form, FormGroup, Label, Input,Button, Container } from 'reactstrap';
-import { Link } from "react-router-dom"
-// import PropTypes from "prop-types"
+import { Row, Col, Form, FormGroup, Label, Input,Button, Container } from 'reactstrap';
+import { Redirect } from "react-router-dom"
 
 class Edit extends React.Component {
   constructor(props){
@@ -48,16 +47,13 @@ handleEdit = () =>{
 
 
   render () {
-
     const { form } = this.state
-    const { apartments } = this.props
-    // const apartment = apartments.find((a)=> a.id === parseInt(form.apartmentid))
     return (
       <React.Fragment>
         <Container>
           <Row>
             <Col md={12}>
-            <Form>
+            <Form className="form-inner">
                 <FormGroup>
                     <Label for="street">Street</Label>
                         <Input
@@ -138,11 +134,13 @@ handleEdit = () =>{
                               value={ form.manager_hours }
                           />
                   </FormGroup>
+                  <Button className= "btn btn-primary" onClick={ this.handleEdit }>
+                    Submit Changes
+                  </Button>
               </Form>
-              {this.state.success && <Redirect to="/apartments" />}
-              <Link to="/apartments" className= "btn btn-primary" onClick={ this.handleEdit }>
-              Submit Changes
-              </Link>
+              {this.state.success && 
+                <Redirect to="/apartments" />
+              }
             </Col>
           </Row>
         </Container>

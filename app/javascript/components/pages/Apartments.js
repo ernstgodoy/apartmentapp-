@@ -14,17 +14,15 @@ class Apartments extends React.Component {
         <Container>
           <Row>
             <Col>
-              <div className="text-center">
-                <h1>My Listings</h1>
-              </div>
+              <h1>My Listings</h1>
             </Col>
           </Row>
           <Row >
             <Col >
-              <CardDeck style={{display: 'flex', flexDirection: 'row'}}>
+              <CardDeck>
                 { apartment.map((apartment, i) =>
-                  <Col md={6}>
-                    <Card style={{flex: 1}} bodystyle={{padding: "0"}} key={i}>
+                  <Col md={6} key={i}>
+                    <Card>
                       <CardBody>
                         <CardText className="text-center"> {apartment.street} </CardText>
                         <CardText className="text-center"> {apartment.city}, {apartment.state.toUpperCase()} </CardText>

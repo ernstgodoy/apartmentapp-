@@ -1,6 +1,6 @@
 import React from "react"
-import { Form, FormGroup, Label, Input, Col, Container } from 'reactstrap'
-import { Link } from "react-router-dom"
+import { Form, FormGroup, Label, Input, Col, Container, Button } from 'reactstrap'
+import { Redirect } from 'react-router-dom'
 
 class AddNew extends React.Component {
   constructor(props){
@@ -38,11 +38,9 @@ class AddNew extends React.Component {
     return (
       <React.Fragment>
         <Container>
-          <div>
-            <h1 className="text-center">Add New Listing</h1>
-          </div>
+          <h1>Add New Listing</h1>
           <Col md={12} >
-            <Form>
+            <Form className="form-inner">
               <FormGroup>
                 <Label for="street">Street</Label>
                   <Input
@@ -131,9 +129,11 @@ class AddNew extends React.Component {
                     placeholder="Aparments Manager Hours"
                   />
               </FormGroup>
+              <Button className= "btn btn-primary" onClick={ this.handleNewApartment }>Add Listing</Button>
             </Form>
-            { this.state.success && <Redirect to="/apartments" /> }
-            <Link to="/apartments" className= "btn btn-primary" onClick={ this.handleNewApartment }>Add Listing</Link>
+            { this.state.success && 
+              <Redirect to="/apartments" /> 
+            }
             </Col>
         </Container>
     </React.Fragment>
